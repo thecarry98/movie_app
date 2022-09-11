@@ -14,8 +14,6 @@ class UseCaseBinding extends Bindings {
     Get.lazyPut(() => GetComingSoonUsecase(Get.find()));
     Get.lazyPut(() => GetMovieDetailAuthUsecase(Get.find()));
     Get.lazyPut(() => GetFullMovieDetailUsecase(Get.find()));
-    Get.lazyPut(() => GetFullMovieDetailUsecase(Get.find()));
-    Get.lazyPut(() => GetFullReviewUsecase(Get.find()));
     Get.lazyPut(() => GetFullReviewUsecase(Get.find()));
   }
 }

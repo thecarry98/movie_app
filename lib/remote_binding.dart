@@ -21,6 +21,5 @@ class RemoteBinding extends Bindings {
     Get.lazyPut<ReviewChildDataSource>(() => ReviewChildDataSourceImpl(),
         fenix: true);
     Get.lazyPut<RestfulModule>(() => ResfulModuleImpl(), fenix: true);
-    Get.lazyPut<RestfulModule>(() => ResfulModuleImpl(), fenix: true);
   }
 }

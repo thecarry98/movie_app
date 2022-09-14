@@ -26,6 +26,10 @@ class R {
   static const String ASSETS_SVG_EVENT_TICKET_SVG =
       'assets/svg/event-ticket.svg';
 
+  /// ![preview](file://D:\dev\Projects - Flutter\seta\movie_app\assets\svg\icons8-close.svg)
+  static const String ASSETS_SVG_ICONS8_CLOSE_SVG =
+      'assets/svg/icons8-close.svg';
+
   /// ![preview](file://D:\dev\Projects - Flutter\seta\movie_app\assets\svg\logo.svg)
   static const String ASSETS_SVG_LOGO_SVG = 'assets/svg/logo.svg';
 

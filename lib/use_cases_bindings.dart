@@ -5,6 +5,7 @@ import 'package:movie_app/features/start/domain/usecase/get_coming_soon_usecase.
 
 import 'features/movie_detail/domain/usecase/review/get_full_review_usecase.dart';
 import 'features/start/domain/usecase/get_now_showing_usecase.dart';
+import 'features/start/domain/usecase/search_movie_usecase.dart';
 
 class UseCaseBinding extends Bindings {
   @override
@@ -15,5 +16,6 @@ class UseCaseBinding extends Bindings {
     Get.lazyPut(() => GetMovieDetailAuthUsecase(Get.find()));
     Get.lazyPut(() => GetFullMovieDetailUsecase(Get.find()));
     Get.lazyPut(() => GetFullReviewUsecase(Get.find()));
+    Get.lazyPut(() => SearchMovieUsecase(Get.find()));
   }
 }

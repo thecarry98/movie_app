@@ -17,12 +17,12 @@ class HomeView extends GetView<HomeController> {
     return SafeArea(
       child: Obx(
         () => Scaffold(
-          appBar: AppBarCustom(
-            color: colorWhite,
-            title: controller.title[controller.index.value],
-            centerTitle: true,
-            isSearch: true,
-          ),
+          // appBar: AppBarCustom(
+          //   color: colorWhite,
+          //   title: controller.title[controller.index.value],
+          //   centerTitle: true,
+          //   isSearch: true,
+          // ),
           body: controller.body[controller.index.value],
           bottomNavigationBar: BottomNavigationBar(
             items: [

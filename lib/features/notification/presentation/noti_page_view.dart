@@ -10,8 +10,11 @@ class NotiPageView extends GetView<NotiPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: Text('noti')),
+    return Scaffold(
+      appBar: AppBar(),
+      body: Container(
+        child: Center(child: Text('noti')),
+      ),
     );
   }
 }

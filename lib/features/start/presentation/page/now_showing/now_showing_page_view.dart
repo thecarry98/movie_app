@@ -9,6 +9,7 @@ import 'package:movie_app/features/start/presentation/component/movie_card_compo
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../../../routes.dart';
+import '../../../domain/usecase/search_movie_usecase.dart';
 import '../../controller/start_page_controller.dart';
 import 'controller/now_showing_page_controller.dart';
 
@@ -19,7 +20,7 @@ class NowShowingPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NowShowingPageController controller = Get.put(
-        NowShowingPageController(tag, Get.find<GetNowShowingUsecase>()),
+        NowShowingPageController(tag, Get.find<GetNowShowingUsecase>(), Get.find<SearchMovieUsecase>()),
         tag: tag);
     return Obx(
       () => controller.isLoading.isFalse

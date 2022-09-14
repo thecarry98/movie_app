@@ -10,57 +10,47 @@ import '../../const/resource.dart';
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   AppBarCustom({
     Key? key,
-    this.showBack = false,
-    this.title = '',
-    this.centerTitle = false,
-    this.isDrawer = false,
-    this.color,
-    this.actionCount = 1,
-    this.notification = false,
-    this.isCart = false,
-    this.isSearch = false,
+    this.isBack = false,
+    this.title,
     this.middle,
+    this.trailing,
+    this.isNoti = false,
+    this.isSearch = false,
+    // this.isActiveSearch = false,
+    this.color,
+    this.callbackTrailing,
   }) : preferredSize = const Size.fromHeight(kToolbarHeight);
-  // : super(key: key);
   final Size preferredSize;
-  Widget? middle;
+  bool isBack;
   String? title;
-  bool centerTitle;
-  bool isDrawer;
-  bool showBack;
-  Color? color;
-  int? actionCount;
-  bool notification;
-  bool isCart;
+  Widget? middle;
+  Widget? trailing;
+  bool isNoti;
   bool isSearch;
+  // bool isActiveSearch;
+  Color? color;
+  Function()? callbackTrailing;
+  // Function(String) onSearchChanged;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoNavigationBar(
-      backgroundColor: color ?? colore5e5e5,
-      leading: showBack
+      leading: isBack
           ? GestureDetector(
               onTap: Get.back,
-              child: SvgPicture.asset(R.ASSETS_SVG_ARROW_SVG),
+              child: Icon(CupertinoIcons.back),
             )
           : Container(),
-      middle: centerTitle
-          ? Text(
-              '$title',
-              style: typoRegular18.copyWith(
-                  fontSize: 18, fontWeight: FontWeight.bold),
-            )
-          : Container(),
+      middle: middle,
       trailing: isSearch
           ? GestureDetector(
-              onTap: () {},
-              child: SvgPicture.asset(
-                R.ASSETS_SVG_ZOOM_SVG,
-                width: 15,
-                height: 15,
-              ),
+              onTap: callbackTrailing
+              // print('$isActiveSearch');
+              ,
+              child: SvgPicture.asset(R.ASSETS_SVG_ZOOM_SVG),
             )
-          : Container(),
+          : trailing,
+      // trailing: trailing
     );
   }
 }

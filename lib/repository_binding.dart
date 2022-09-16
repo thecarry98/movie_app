@@ -25,6 +25,7 @@ class RepositoryBinding extends Bindings {
 
     Get.lazyPut<ReviewChildRepository>(
         () => ReviewChildRepositoryImpl(reviewChildDataSource: Get.find()));
-    Get.lazyPut<SearchReposities>(() => SearchRepositiesImpl());
+    Get.lazyPut<SearchReposities>(
+        () => SearchRepositiesImpl(searchMovieDataSource: Get.find()));
   }
 }

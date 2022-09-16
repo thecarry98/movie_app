@@ -21,7 +21,7 @@ class StartRepositoriesImpl implements StartRepositories {
       return Right(movies);
     } on Equatable {
       return Left(
-        NoDataFound(message: 'no data get coming soon'),
+        NoDataFound(message: 'no data'),
       );
     }
   }

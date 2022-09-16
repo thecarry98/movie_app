@@ -32,14 +32,21 @@ class NowShowingPageController extends GetxController {
     }
   }
 
+  @override
+  void onReady() async {
+    super.onReady();
+    // searchMovie();
+  }
+
   void searchMovie(String name) async {
     isLoading.value = true;
-    // var result = await getSearchMovie(name);
-    // result.fold(
-    //   (l) => print('Error'),
-    //   (r) => {movieSearch.value = r},
-    // );
+    var result = await getSearchMovie(name);
+    result.fold(
+      (l) => print('Error'),
+      (r) => {movieSearch.value = r, print('done')},
+    );
     print(name);
+    print('${movieSearch.value!.resultEntity}');
 
     isLoading.value = false;
   }

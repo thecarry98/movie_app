@@ -20,7 +20,7 @@ class StartPageView extends GetView<StartPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarCustom(
-        isBack: true,
+        isBack: false,
         // title: 'Start Movie',
         // isActiveSearch: controller.activeSearch.value,
         middle: Obx(() => controller.activeSearch.value

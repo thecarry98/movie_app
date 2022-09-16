@@ -21,6 +21,7 @@ class StartPageController extends GetxController
   // ];
   var activeSearch = false.obs;
   var isLoading = false.obs;
+  var isSearching = false.obs;
   void callbackTrailing() {
     activeSearch(!activeSearch.value);
     print(activeSearch.value);
@@ -28,8 +29,9 @@ class StartPageController extends GetxController
 
   late NowShowingPageController controller1;
 
-  void onChanged(name) {
+  void onChanged(String name) {
     // print(name);
+
     controller1.searchMovie(name);
   }
 
@@ -41,11 +43,11 @@ class StartPageController extends GetxController
     super.onInit();
     // getNowShowingMovie();
     tabController = TabController(vsync: this, length: listTitle.length);
-    if (Get.isRegistered<NowShowingPageController>()) {
-      controller1 = Get.find<NowShowingPageController>();
+    if (Get.isRegistered<NowShowingPageController>(tag: listTitle[0])) {
+      controller1 = Get.find<NowShowingPageController>(tag: listTitle[0]);
     } else {
       controller1 = Get.put(
-          NowShowingPageController(listTitle[0], Get.find(), Get.find()));
+          NowShowingPageController(listTitle[0], Get.find(), Get.find()), tag: listTitle[0]);
     }
   }
 

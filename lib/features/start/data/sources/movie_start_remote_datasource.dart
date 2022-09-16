@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../../../../core/commons/network/user.dart';
+
 abstract class MovieStartRemoteDataSource {
   Future<ListItems> getComingSoon();
   Future<ListItems> getNowShowing();
@@ -16,7 +18,7 @@ class MovieStartRemoteDataSourceImpl implements MovieStartRemoteDataSource {
   Future<ListItems> getComingSoon() async {
     RestfulModule restfulModule = Get.find();
     var response = await restfulModule
-        .get('https://imdb-api.com/en/API/Top250Movies/k_dbjlvlva');
+        .get('https://imdb-api.com/en/API/Top250Movies/${User.user}');
 
     return ListItems.fromMap(response.body);
   }
@@ -27,7 +29,7 @@ class MovieStartRemoteDataSourceImpl implements MovieStartRemoteDataSource {
   Future<ListItems> getNowShowing() async {
     RestfulModule restfulModule = Get.find();
     var response = await restfulModule
-        .get('https://imdb-api.com/en/API/MostPopularMovies/k_m8a5jjfl');
+        .get('https://imdb-api.com/en/API/MostPopularMovies/${User.user}');
 
     return ListItems.fromMap(response.body);
   }

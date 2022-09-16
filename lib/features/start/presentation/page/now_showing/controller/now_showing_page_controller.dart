@@ -8,6 +8,8 @@ import '../../../../domain/usecase/search_movie_usecase.dart';
 
 class NowShowingPageController extends GetxController {
   var isLoading = false.obs;
+  var isLoading2 = false.obs;
+  var isSearching = false.obs;
   final String tag;
   // final TextEditingController textController;
 
@@ -18,6 +20,7 @@ class NowShowingPageController extends GetxController {
   final SearchMovieUsecase getSearchMovie;
   var listMovie = [].obs;
   Rx<SearchMovieEntity?> movieSearch = Rx<SearchMovieEntity?>(null);
+  @override
   void onInit() async {
     super.onInit();
     // isLoading.value = true;
@@ -39,16 +42,33 @@ class NowShowingPageController extends GetxController {
   }
 
   void searchMovie(String name) async {
-    isLoading.value = true;
-    var result = await getSearchMovie(name);
-    result.fold(
-      (l) => print('Error'),
-      (r) => {movieSearch.value = r, print('done')},
-    );
-    print(name);
-    print('${movieSearch.value!.resultEntity}');
-
-    isLoading.value = false;
+    if (name.isEmpty) {
+      // isLoading.value = true;
+      callMovie();
+      isSearching(false);
+    } else {
+      print(name);
+      isLoading(true);
+      isSearching.value = true;
+      var result = await getSearchMovie(name);
+      result.fold(
+        (l) => print('Error'),
+        (r) => {
+          movieSearch.value = r,
+          print('done'),
+        },
+      );
+      isLoading(false);
+      print(isSearching.value);
+      print(movieSearch.value!.resultEntity!.length);
+    }
+    // var result = await getSearchMovie(name);
+    // result.fold(
+    //   (l) => print('Error'),
+    //   (r) => {movieSearch.value = r, print('done')},
+    // );
+    // print(name);
+    // print('${movieSearch.value!.resultEntity}');
   }
 
   void callMovie() async {

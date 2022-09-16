@@ -19,14 +19,48 @@ class NowShowingPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NowShowingPageController controller = Get.put(
-        NowShowingPageController(tag, Get.find<GetNowShowingUsecase>(), Get.find<SearchMovieUsecase>()),
-        tag: tag);
-    return Obx(
-      () => controller.isLoading.isFalse
-          ? Container(
-              margin: const EdgeInsets.all(8),
-              child: AlignedGridView.count(
+    late NowShowingPageController controller;
+    if (Get.isRegistered<NowShowingPageController>(tag: tag)) {
+      controller = Get.find<NowShowingPageController>(tag: tag);
+    } else {
+      controller = Get.put(
+        NowShowingPageController(
+          tag,
+          Get.find<GetNowShowingUsecase>(),
+          Get.find<SearchMovieUsecase>(),
+        ),
+        tag: tag,
+      );
+    }
+    return Obx(() {
+      print('${controller.isSearching.value}' + 'iiiiiiiiii');
+      print('${controller.isLoading}' + 'is loading');
+      return Container(
+        margin: const EdgeInsets.all(8),
+        child: controller.isSearching.isTrue
+            ? AlignedGridView.count(
+                itemCount: controller.movieSearch.value!.resultEntity!.length,
+                crossAxisCount: 2,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 8,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    child: MovieCardComponent(
+                      movieSearch:
+                          controller.movieSearch.value!.resultEntity![index],
+                      isSearching: true,
+                    ),
+                    onTap: () {
+                      Get.toNamed(Routes.movie_detail, arguments: {
+                        'id':
+                            '${controller.movieSearch.value!.resultEntity![index].id}'
+                      });
+                      // print(controller.listMovie[index].id);
+                    },
+                  );
+                },
+              )
+            : AlignedGridView.count(
                 itemCount: controller.listMovie.length,
                 crossAxisCount: 2,
                 mainAxisSpacing: 16,
@@ -44,12 +78,12 @@ class NowShowingPageView extends StatelessWidget {
                   );
                 },
               ),
-            )
-          : const Center(
-              child: CircularProgressIndicator(
-                color: colore51937,
-              ),
-            ),
-    );
+      );
+      // : const Center(
+      //     child: CircularProgressIndicator(
+      //       color: colore51937,
+      //     ),
+      //   );
+    });
   }
 }

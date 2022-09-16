@@ -5,11 +5,17 @@ import 'package:movie_app/features/gen/colors.dart';
 import 'package:movie_app/features/start/domain/entities/movie_entity.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_app/theme/text_style.dart';
+
+import '../../domain/entities/search_movie/search_movie_entity.dart';
 // import 'package:cached_network_image/cached_network_image.dart';
 
 class MovieCardComponent extends StatelessWidget {
-  MovieCardComponent({Key? key, this.movie}) : super(key: key);
+  MovieCardComponent(
+      {Key? key, this.movie, this.movieSearch, this.isSearching = false})
+      : super(key: key);
+  bool? isSearching;
   MovieEntity? movie;
+  ResultEntity? movieSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,9 @@ class MovieCardComponent extends StatelessWidget {
             height: 230,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage('${movie?.image}'),
+                image: NetworkImage(isSearching == false
+                    ? '${movie?.image}'
+                    : '${movieSearch?.image}'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -36,7 +44,10 @@ class MovieCardComponent extends StatelessWidget {
           RatingBar.builder(
             itemSize: 15,
             // initialRating: (movie?.imDbRating as double)/2,
-            initialRating: double.tryParse('${movie?.imDbRating}') ?? 8 / 2,
+            initialRating: double.tryParse(isSearching == false
+                    ? '${movie?.imDbRating}'
+                    : '${movieSearch?.id}') ??
+                8 / 2,
             minRating: 1,
             direction: Axis.horizontal,
             allowHalfRating: false,
@@ -55,7 +66,7 @@ class MovieCardComponent extends StatelessWidget {
             height: 5,
           ),
           Text(
-            '${movie?.title}',
+            isSearching == false ? '${movie?.title}' : '${movieSearch?.title}',
             maxLines: 1,
             style: typoRegular18.copyWith(
               fontSize: 16,
@@ -71,7 +82,7 @@ class MovieCardComponent extends StatelessWidget {
               const SizedBox(width: 5),
               Text('|'),
               const SizedBox(width: 5),
-              Text('${movie?.year}'),
+              Text(isSearching == false ? '${movie?.year}' : '1900'),
             ],
           ),
         ],

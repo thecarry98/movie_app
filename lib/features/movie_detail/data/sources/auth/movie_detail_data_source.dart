@@ -6,6 +6,7 @@ import 'package:movie_app/features/movie_detail/domain/entities/auth/movie_detai
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../../core/commons/network/user.dart';
 import '../../../../../core/failures/datasource/datasource.dart';
 
 abstract class MovieDetailDataSource {
@@ -19,7 +20,7 @@ class MovieDetailDataSourceImpl implements MovieDetailDataSource {
   Future<MovieAuth> getMovieDetailAuth(String id) async {
     // _getAPI('https://imdb-api.com/en/API/Images/k_m8a5jjfl/${id}', id);
     var response = await restfulModule
-        .get('https://imdb-api.com/en/API/Images/k_m8a5jjfl/${id}');
+        .get('https://imdb-api.com/en/API/Images/${User.user}/${id}');
 
     var result = response.body;
     return MovieAuth.fromMap(result);

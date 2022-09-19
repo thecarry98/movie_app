@@ -27,7 +27,7 @@ class TextFieldCustom extends StatelessWidget {
         fontWeight: FontWeight.bold,
         color: colore51937,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         border: InputBorder.none,
         hintText: 'Searching',
       ),

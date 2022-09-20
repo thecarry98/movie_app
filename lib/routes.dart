@@ -1,5 +1,9 @@
 import 'package:movie_app/features/home/presentation/bindings/home_binding.dart';
 import 'package:movie_app/features/movie_detail/presentation/pages/view_all/bindings/view_all_binding.dart';
+import 'package:movie_app/features/profile/presentation/bindings/profile_binding.dart';
+import 'package:movie_app/features/profile/presentation/controller/signup_controller.dart';
+import 'package:movie_app/features/profile/presentation/page/signup_page.dart';
+import 'package:movie_app/features/profile/presentation/profile_view.dart';
 import 'package:movie_app/features/splash/bindings/splash_binding.dart';
 import 'package:movie_app/features/start/presentation/bindings/start_page_binding.dart';
 import 'package:movie_app/features/start/presentation/page/now_showing/now_showing_page_view.dart';
@@ -36,6 +40,8 @@ class Routes {
   static const String movie_detail = '/movie_detail';
   static const String movie_detail_auth = '/movie_detail_auth';
   static const String view_all = '/view_all';
+  static const String profile = '/profile';
+  static const String sign_up = '/sign_up';
 
   static final routes = [
     GetPage(
@@ -83,10 +89,15 @@ class Routes {
       page: () => ViewAllView(),
       bindings: [ViewAllBinding()],
     ),
-    // GetPage(
-    //   name: movie_detail_auth,
-    //   page: () => MovieDetailAuthView(),
-    //   bindings: [MovieDetailAuthBinding()],
-    // ),
+    GetPage(
+      name: profile,
+      page: () => ProfileView(),
+      bindings: [],
+    ),
+    GetPage(
+      name: sign_up,
+      page: () => SignupPageView(),
+      bindings: [ProfileBinding()],
+    ),
   ];
 }

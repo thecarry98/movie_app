@@ -24,7 +24,7 @@ class StartPageController extends GetxController
   var isSearching = false.obs;
   void callbackTrailing() {
     activeSearch(!activeSearch.value);
-    print(activeSearch.value);
+    // print(activeSearch.value);
   }
 
   late NowShowingPageController controller1;
@@ -47,7 +47,8 @@ class StartPageController extends GetxController
       controller1 = Get.find<NowShowingPageController>(tag: listTitle[0]);
     } else {
       controller1 = Get.put(
-          NowShowingPageController(listTitle[0], Get.find(), Get.find()), tag: listTitle[0]);
+          NowShowingPageController(listTitle[0], Get.find(), Get.find()),
+          tag: listTitle[0]);
     }
   }
 

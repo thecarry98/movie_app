@@ -18,6 +18,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     this.isSearch = false,
     // this.isActiveSearch = false,
     this.color,
+    this.leading,
     this.callbackTrailing,
   }) : preferredSize = const Size.fromHeight(kToolbarHeight);
   final Size preferredSize;
@@ -25,6 +26,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   String? title;
   Widget? middle;
   Widget? trailing;
+  Widget? leading;
   bool isNoti;
   bool isSearch;
   // bool isActiveSearch;
@@ -40,7 +42,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
               onTap: Get.back,
               child: Icon(CupertinoIcons.back),
             )
-          : Container(),
+          : leading,
       middle: middle,
       trailing: isSearch
           ? GestureDetector(

@@ -124,7 +124,7 @@ class FullMovieDetail extends FullMovieDetailEntity {
         type: json["type"],
         year: json["year"],
         image: json["image"],
-        releaseDate: DateTime.parse(json["releaseDate"]),
+        releaseDate: DateTime.parse(json["releaseDate"] ?? '01/01/1990'),
         runtimeMins: json["runtimeMins"],
         runtimeStr: json["runtimeStr"],
         plot: json["plot"],

@@ -6,6 +6,7 @@ import 'package:movie_app/features/ticket/presentation/ticket_page_view.dart';
 
 import '../../../../const/resource.dart';
 import '../../../gen/colors.dart';
+import '../../../profile/presentation/profile_view.dart';
 import '../../../start/presentation/start_page_view.dart';
 
 class HomeController extends GetxController {
@@ -13,7 +14,7 @@ class HomeController extends GetxController {
     StartPageView(),
     TicketPageView(),
     NotiPageView(),
-    NotiPageView(),
+    ProfileView(),
   ];
 
   List<String> title = [

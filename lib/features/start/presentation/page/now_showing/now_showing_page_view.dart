@@ -36,63 +36,66 @@ class NowShowingPageView extends StatelessWidget {
       () {
         // print('${controller.isSearching.value}' + 'iiiiiiiiii');
         // print('${controller.isLoading}' + 'is loading');
-        return Container(
-          margin: const EdgeInsets.all(8),
-          child: controller.isSearching.isTrue
-              ? controller.isLoading.isFalse
-                  ? AlignedGridView.count(
-                      itemCount:
-                          controller.movieSearch.value?.resultEntity?.length ??
-                              5,
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 8,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          child: MovieCardComponent(
-                            movieSearch: controller
-                                .movieSearch.value?.resultEntity?[index],
-                            isSearching: true,
-                          ),
-                          onTap: () {
-                            Get.toNamed(Routes.movie_detail, arguments: {
-                              'id':
-                                  '${controller.movieSearch.value?.resultEntity?[index].id}'
-                            });
-                            // print(controller.listMovie[index].id);
-                          },
-                        );
-                      },
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        color: colore51937,
+        return GestureDetector(
+          onTap: () => Get.focusScope!.unfocus(),
+          child: Container(
+            margin: const EdgeInsets.all(8),
+            child: controller.isSearching.isTrue
+                ? controller.isLoading.isFalse
+                    ? AlignedGridView.count(
+                        itemCount: controller
+                                .movieSearch.value?.resultEntity?.length ??
+                            5,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 8,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            child: MovieCardComponent(
+                              movieSearch: controller
+                                  .movieSearch.value?.resultEntity?[index],
+                              isSearching: true,
+                            ),
+                            onTap: () {
+                              Get.toNamed(Routes.movie_detail, arguments: {
+                                'id':
+                                    '${controller.movieSearch.value?.resultEntity?[index].id}'
+                              });
+                              // print(controller.listMovie[index].id);
+                            },
+                          );
+                        },
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(
+                          color: colore51937,
+                        ),
+                      )
+                : controller.isLoading.isFalse
+                    ? AlignedGridView.count(
+                        itemCount: controller.listMovie.length,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 8,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            child: MovieCardComponent(
+                                movie: controller.listMovie[index]),
+                            onTap: () {
+                              Get.toNamed(Routes.movie_detail, arguments: {
+                                'id': '${controller.listMovie[index].id}'
+                              });
+                              print(controller.listMovie[index].id);
+                            },
+                          );
+                        },
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(
+                          color: colore51937,
+                        ),
                       ),
-                    )
-              : controller.isLoading.isFalse
-                  ? AlignedGridView.count(
-                      itemCount: controller.listMovie.length,
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 8,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          child: MovieCardComponent(
-                              movie: controller.listMovie[index]),
-                          onTap: () {
-                            Get.toNamed(Routes.movie_detail, arguments: {
-                              'id': '${controller.listMovie[index].id}'
-                            });
-                            print(controller.listMovie[index].id);
-                          },
-                        );
-                      },
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        color: colore51937,
-                      ),
-                    ),
+          ),
         );
       },
     );

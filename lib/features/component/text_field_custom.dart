@@ -34,6 +34,7 @@ class TextFieldCustom extends StatelessWidget {
       controller: textEditingController,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
+      keyboardType: TextInputType.none,
     );
   }
 }

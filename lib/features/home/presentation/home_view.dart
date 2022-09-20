@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/features/gen/colors.dart';
 
 import '../../../const/resource.dart';
+import '../../../gen/assets.gen.dart';
 import '../../component/appbar_custom.dart';
 import 'controller/home_controller.dart';
 
@@ -27,14 +28,16 @@ class HomeView extends GetView<HomeController> {
           bottomNavigationBar: BottomNavigationBar(
             items: [
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  R.ASSETS_SVG_MOVIE_REEL_SVG,
-                ),
+                icon: Assets.svg.movieReel.svg(),
+                // SvgPicture.asset(
+                //   R.ASSETS_SVG_MOVIE_REEL_SVG,
+                // ),
                 label: '',
-                activeIcon: SvgPicture.asset(
-                  R.ASSETS_SVG_MOVIE_REEL_SVG,
-                  color: color47cfff,
-                ),
+                activeIcon: Assets.svg.movieReel.svg(color: color47cfff),
+                // SvgPicture.asset(
+                //   R.ASSETS_SVG_MOVIE_REEL_SVG,
+                //   color: color47cfff,
+                // ),
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(

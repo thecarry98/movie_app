@@ -54,6 +54,16 @@ class LoginPageView extends GetView<ProfileController> {
               ),
               const SizedBox(height: 8),
               CommonTextFormField(
+                controller: controller.userController,
+                validator: (str) {
+                  if (str!.isEmpty) {
+                    return 'Không được để trống';
+                  }
+                  if (str.length < 9 || str.length > 11) {
+                    return 'Điền lại';
+                  }
+                  return null;
+                },
                 prefixLeading: Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Assets.svg.single04.svg(
@@ -71,6 +81,7 @@ class LoginPageView extends GetView<ProfileController> {
                 ),
               ),
               CommonTextFormField(
+                controller: controller.passwordController,
                 prefixLeading: Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Assets.svg.lock.svg(

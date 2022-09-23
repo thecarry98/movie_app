@@ -5,8 +5,6 @@ import 'package:movie_app/features/movie_detail/domain/entities/review/review_en
 import 'package:movie_app/theme/text_style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../const/resource.dart';
-
 class CommentComponent extends StatelessWidget {
   CommentComponent(this.item);
   ItemReviewEntity? item;

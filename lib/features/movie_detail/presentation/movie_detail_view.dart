@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/features/movie_detail/presentation/movie_detail_auth_view.dart';
-import '../../../const/resource.dart';
 import '../../../theme/text_style.dart';
 import '../../gen/colors.dart';
 import 'controller/movie_detail_controller.dart';

@@ -5,7 +5,7 @@ import 'package:movie_app/features/gen/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/theme/text_style.dart';
 
-import '../../const/resource.dart';
+import '../../gen/assets.gen.dart';
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   AppBarCustom({
@@ -49,7 +49,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
               onTap: callbackTrailing
               // print('$isActiveSearch');
               ,
-              child: SvgPicture.asset(R.ASSETS_SVG_ZOOM_SVG),
+              child: Assets.svg.zoom.svg(),
             )
           : trailing,
       // trailing: trailing

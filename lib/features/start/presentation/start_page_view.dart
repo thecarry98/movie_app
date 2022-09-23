@@ -7,7 +7,7 @@ import 'package:movie_app/features/start/presentation/page/coming_soon/coming_so
 import 'package:movie_app/features/start/presentation/page/now_showing/now_showing_page_view.dart';
 import 'package:movie_app/theme/text_style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../const/resource.dart';
+import '../../../gen/assets.gen.dart';
 import '../../../routes.dart';
 import '../../component/appbar_custom.dart';
 import '../../component/text_field_custom.dart';
@@ -40,14 +40,14 @@ class StartPageView extends GetView<StartPageController> {
                   onTap: controller.callbackTrailing
                   // print('$isActiveSearch');
                   ,
-                  child: SvgPicture.asset(R.ASSETS_SVG_ZOOM_SVG),
+                  child: Assets.svg.zoom.svg(),
+                  // SvgPicture.asset(R.ASSETS_SVG_ZOOM_SVG),
                 )
               : GestureDetector(
                   onTap: controller.callbackTrailing
                   // print('$isActiveSearch');
                   ,
-                  child: SvgPicture.asset(
-                    R.ASSETS_SVG_ICONS8_CLOSE_SVG,
+                  child: Assets.svg.icons8Close.svg(
                     height: 20,
                     width: 20,
                     color: Colors.black,

@@ -4,8 +4,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/features/gen/colors.dart';
-
-import '../../../const/resource.dart';
 import '../../../gen/assets.gen.dart';
 import '../../component/appbar_custom.dart';
 import 'controller/home_controller.dart';
@@ -18,56 +16,28 @@ class HomeView extends GetView<HomeController> {
     return SafeArea(
       child: Obx(
         () => Scaffold(
-          // appBar: AppBarCustom(
-          //   color: colorWhite,
-          //   title: controller.title[controller.index.value],
-          //   centerTitle: true,
-          //   isSearch: true,
-          // ),
           body: controller.body[controller.index.value],
           bottomNavigationBar: BottomNavigationBar(
             items: [
               BottomNavigationBarItem(
                 icon: Assets.svg.movieReel.svg(),
-                // SvgPicture.asset(
-                //   R.ASSETS_SVG_MOVIE_REEL_SVG,
-                // ),
                 label: '',
                 activeIcon: Assets.svg.movieReel.svg(color: color47cfff),
-                // SvgPicture.asset(
-                //   R.ASSETS_SVG_MOVIE_REEL_SVG,
-                //   color: color47cfff,
-                // ),
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  R.ASSETS_SVG_EVENT_TICKET_SVG,
-                ),
+                icon: Assets.svg.eventTicket.svg(),
                 label: '',
-                activeIcon: SvgPicture.asset(
-                  R.ASSETS_SVG_EVENT_TICKET_SVG,
-                  color: color47cfff,
-                ),
+                activeIcon: Assets.svg.eventTicket.svg(color: color47cfff),
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  R.ASSETS_SVG_ALARM_SVG,
-                ),
+                icon: Assets.svg.alarm.svg(),
                 label: '',
-                activeIcon: SvgPicture.asset(
-                  R.ASSETS_SVG_ALARM_SVG,
-                  color: color47cfff,
-                ),
+                activeIcon: Assets.svg.alarm.svg(color: color47cfff),
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  R.ASSETS_SVG_SINGLE_03_SVG,
-                ),
+                icon: Assets.svg.single03.svg(),
                 label: '',
-                activeIcon: SvgPicture.asset(
-                  R.ASSETS_SVG_SINGLE_03_SVG,
-                  color: color47cfff,
-                ),
+                activeIcon: Assets.svg.single03.svg(color: color47cfff),
               ),
             ],
             currentIndex: controller.index.value,

@@ -5,7 +5,7 @@ import 'package:movie_app/features/movie_detail/domain/entities/detail/full_movi
 import 'package:movie_app/theme/text_style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../const/resource.dart';
+import '../../../../../../gen/assets.gen.dart';
 
 class ActorComponent extends StatelessWidget {
   ActorComponent({Key? key, this.actor, this.radius = 25}) : super(key: key);
@@ -50,7 +50,8 @@ class ActorComponent extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                SvgPicture.asset(R.ASSETS_SVG_GROUP9_9_SVG),
+                Assets.svg.group99.svg(),
+                // SvgPicture.asset(R.ASSETS_SVG_GROUP9_9_SVG),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
